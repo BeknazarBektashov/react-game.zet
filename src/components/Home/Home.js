@@ -1,4 +1,7 @@
 import React from "react";
+
+import { NavLink } from "react-router-dom";
+
 import Button from "../UI/Button/Button";
 import classes from "./Home.module.css";
 
@@ -15,7 +18,9 @@ function Home() {
           <header>
             <h1>Добро пожаловать в Колизей</h1>
             <p>соревнуйтесь с другими игроками за место лучшего</p>
-            <Button>начать играть</Button>
+            <NavLink to="/auth/regist">
+              <Button>начать играть</Button>
+            </NavLink>
           </header>
         </div>
       </div>

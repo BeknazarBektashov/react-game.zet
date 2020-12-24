@@ -125,3 +125,7 @@
 .Home .Home__box .Home__content button {
   margin: 40px auto 0;
 }
+
+.Home a {
+  text-decoration: none;
+}
