@@ -1,0 +1,22 @@
+.Auth {
+  width: 100%;
+  height: 100vh;
+  background-image: url(../../assets/images/header_2.jpg);
+  background-size: cover;
+}
+
+.Auth__content {
+  max-width: 650px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 0;
+  box-sizing: border-box;
+}
+
+.Auth a {
+  text-decoration: none;
+}

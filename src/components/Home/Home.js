@@ -18,7 +18,7 @@ function Home() {
           <header>
             <h1>Добро пожаловать в Колизей</h1>
             <p>соревнуйтесь с другими игроками за место лучшего</p>
-            <NavLink to="/auth/regist">
+            <NavLink to="/auth">
               <Button>начать играть</Button>
             </NavLink>
           </header>
