@@ -51,7 +51,7 @@ function Login() {
               )}
             </label>
             <div className="submit_wrapper">
-              <NavLink to="/auth/regist">У меня есть аккаунта</NavLink>
+              <NavLink to="/auth/regist">У меня нету аккаунта</NavLink>
               <Button>в бой!</Button>
             </div>
           </form>
