@@ -13,12 +13,14 @@ function Auth(props) {
         <header>
           <h2>Зайдите в аккаунт или зарегистрируйтесь</h2>
         </header>
-        <NavLink to="auth/login">
-          <Button>Войти в аккаунт</Button>
-        </NavLink>
-        <NavLink to="auth/regist">
-          <Button>зарегистрироватся</Button>
-        </NavLink>
+        <div className={classes.Auth__btns_wrapper}>
+          <NavLink to="auth/login">
+            <Button>Войти в аккаунт</Button>
+          </NavLink>
+          <NavLink to="auth/regist">
+            <Button>зарегистрироватся</Button>
+          </NavLink>
+        </div>
       </article>
     </div>
   );
